@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::elements">
+                    <resource id="Magento_Backend::content_elements">
+                        <resource id="Training_Slideshow::slideshow" title="Slideshow" sortOrder="60">
+                            <resource id="Training_Slideshow::index" title="Slideshow index" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

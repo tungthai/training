@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Training_Slideshow::slideshow" title="Slidershow" module="Training_Slideshow" sortOrder="20" parent="Magento_Backend::content" resource="Training_Slideshow::slideshow"/>
+        <add id="Training_Slideshow::slider" title="Slider" module="Training_Slideshow" sortOrder="10" parent="Training_Slideshow::slideshow" action="slideshow/slider/" resource="Training_Slideshow::slider" />
+        <add id="Training_Slideshow::banner" title="Banner" module="Training_Slideshow" sortOrder="20" parent="Training_Slideshow::slideshow" action="slideshow/banner/" resource="Training_Slideshow::banner" />
+    </menu>
+</config>

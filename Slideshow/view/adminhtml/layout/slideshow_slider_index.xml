@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+    	<title>Slider Manager</title>
+    </head>
+    <body>
+        <!--<referenceContainer name="content">-->
+            <!--<block class="Training\Slideshow\Block\Adminhtml\Slider" name="admin.block.slider.grid.container">-->
+                <!--<block class="Training\Slideshow\Block\Adminhtml\Slider\Grid" name="adminhtml.block.training.slider.grid" />-->
+            <!--</block>-->
+        <!--</referenceContainer>-->
+    </body>
+</page>
