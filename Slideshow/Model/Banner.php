@@ -1,6 +1,6 @@
 <?php
 
-namespace Training\Slidershow\Model;
+namespace Training\Slideshow\Model;
 
 class Banner extends \Magento\Framework\Model\AbstractModel{
     const STATUS_ENABLE = 'Enable';
@@ -17,6 +17,6 @@ class Banner extends \Magento\Framework\Model\AbstractModel{
     }
     
     public function _construct() {
-        $this->_init('Training\Slidershow\Model\ResourceModel\Banner');
+        $this->_init('Training\Slideshow\Model\ResourceModel\Banner');
     }
 }

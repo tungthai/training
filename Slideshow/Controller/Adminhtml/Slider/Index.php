@@ -1,28 +1,24 @@
-    <?php
+<?php
 namespace Training\Slideshow\Controller\Adminhtml\Slider;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
+use Training\Slideshow\Controller\Adminhtml\Slider;
 
-class Index extends \Magento\Backend\App\Action
+class Index extends Slider
 {
-    
-    protected $resultPageFactory;
-
-    public function __construct( Context $context, PageFactory $resultPageFactory) {
-        parent::__construct($context);
-        $this->resultPageFactory = $resultPageFactory;
-    }
     
     public function execute()
     {
-        $resultPage = $this->resultPageFactory->create();
+//        if ($this->getRequest()->getQuery('ajax')) {
+//            $this->_forward('grid');
+//            return;
+//        }
         
+        $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu('Training_Slideshow::slider');
         $resultPage->addBreadcrumb(__('Slideshow'),__('Slideshow'));
-        $resultPage->addBreadcrumb(__('Manage Slider'), __('Manage Slider'));
+        $resultPage->addBreadcrumb(__('Manage Banner'), __('Manage Slider'));
         $resultPage->getConfig()->getTitle()->prepend(__('Manage Slider'));
-        
         return $resultPage;
     }
     

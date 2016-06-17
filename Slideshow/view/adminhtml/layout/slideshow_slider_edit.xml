@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <block class="Training\Slideshow\Block\Adminhtml\Slider\Edit\Tabs" name="training.slideshow.slider.edit.tabs"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Training\Slideshow\Block\Adminhtml\Slider\Edit" name="training.slideshow.slider.edit"/>
+        </referenceContainer>
+    </body>
+</page>
