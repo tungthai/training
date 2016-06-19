@@ -11,7 +11,7 @@ class Edit extends Slider
      */
    public function execute()
    {
-      $slideId = $this->getRequest()->getParam('id');
+      $slideId = $this->getRequest()->getParam('slider_id');
       
         /** @var \Training\Slideshow\Model\Slider $model */
         $model = $this->_sliderFactory->create();
@@ -31,7 +31,7 @@ class Edit extends Slider
             $model->setData($data);
         }
         $this->_coreRegistry->register('slideshow_slider', $model);
- 
+        
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu('Training_Slideshow::slider');

@@ -16,10 +16,5 @@ class Slider extends \Magento\Framework\Model\AbstractModel
         parent::__construct($context, $registry, $resource, $resourceCollection);
         $this->_sliderCollectionFactory = $resourceCollection;
     }
-
-//    public function _construct() {
-//        $this->_init('Training\Slideshow\Model\ResourceModel\Slider');
-//    }
-    
     
 }

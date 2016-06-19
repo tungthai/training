@@ -2,21 +2,19 @@
 
 namespace Training\Slideshow\Model;
 
-class Banner extends \Magento\Framework\Model\AbstractModel{
-    const STATUS_ENABLE = 'Enable';
-    const STATUS_DISABLE = 'Disable';
+class Banner extends \Magento\Framework\Model\AbstractModel
+{
+
+    protected $_bannerCollectionFactory;
     
     public function __construct(
-            \Magento\Framework\Model\Context $context, 
-            \Magento\Framework\Registry $registry, 
-            \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-            \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-            array $data = []
+        \Magento\Framework\Model\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Training\Slideshow\Model\ResourceModel\Banner $resource,
+        \Training\Slideshow\Model\ResourceModel\Banner\Collection $resourceCollection
     ) {
-        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        parent::__construct($context, $registry, $resource, $resourceCollection);
+        $this->_bannerCollectionFactory = $resourceCollection;
     }
     
-    public function _construct() {
-        $this->_init('Training\Slideshow\Model\ResourceModel\Banner');
-    }
 }
