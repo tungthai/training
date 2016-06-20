@@ -6,7 +6,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
 
     protected $_bannerCollection;
-    
+    protected $_sliderCollection;
     
     /**
      * [__construct description].
@@ -19,10 +19,12 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     public function __construct(
             \Magento\Backend\Block\Template\Context $context, 
             \Magento\Backend\Helper\Data $backendHelper, 
-            \Training\Slideshow\Model\ResourceModel\Banner\Collection $bannerCollection, 
+            \Training\Slideshow\Model\ResourceModel\Banner\Collection $bannerCollection,
+            \Training\Slideshow\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
             array $data = []
     ) {
         $this->_bannerCollection = $bannerCollection;
+        $this->_sliderCollection = $sliderCollectionFactory;
         parent::__construct($context, $backendHelper, $data);
         $this->setEmptyText(__('No Banner Found'));
     }
@@ -66,16 +68,29 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn(
             'slider_id',
             [
-                'header' => __('Slider ID'),
-                'index' => 'banner_id',
+                'header' => __('Slide'),
+                'index' => 'slider_id',
+                'type'    => 'options',
+                'options' => $this->getSliderAvailableOption(),
             ]
         );
         
         $this->addColumn(
-            'Order',
+            'image',
+            [
+                'header' => __('Image'),
+                'class' => 'xxx',
+                'width' => '50px',
+                'filter' => false,
+                'renderer' => 'Training\Slideshow\Block\Adminhtml\Banner\Helper\Renderer\Image',
+            ]
+        );
+        
+        $this->addColumn(
+            'order_banner',
             [
                 'header' => __('Order'),
-                'index' => 'order',
+                'index' => 'order_banner',
             ]
         );
 
@@ -88,14 +103,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'options' => Status::getAvailableStatuses(),
             ]
         );
-        
-
-
 
         $this->addColumn(
             'edit',
             [
-                'header' => __('Edit'),
+                'header' => __('Action'),
                 'type' => 'action',
                 'getter' => 'getId',
                 'actions' => [
@@ -116,5 +128,17 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         );
 
         return parent::_prepareColumns();
+    }
+    
+    public function getSliderAvailableOption()
+    {
+        $options = [];
+        $sliderCollection = $this->_sliderCollection->create()->addFieldToSelect(['title']);
+
+        foreach ($sliderCollection as $slider) {
+            $options[$slider->getId()] = $slider->getTitle();
+        }
+
+        return $options;
     }
 }

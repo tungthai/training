@@ -86,7 +86,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn(
             'edit',
             [
-                'header' => __('Edit'),
+                'header' => __('Action'),
                 'type' => 'action',
                 'getter' => 'getId',
                 'actions' => [

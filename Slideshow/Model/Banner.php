@@ -6,6 +6,8 @@ class Banner extends \Magento\Framework\Model\AbstractModel
 {
 
     protected $_bannerCollectionFactory;
+    const MEDIA_PATH = 'training/slidershow/banner/images';
+    
     
     public function __construct(
         \Magento\Framework\Model\Context $context,
@@ -17,4 +19,7 @@ class Banner extends \Magento\Framework\Model\AbstractModel
         $this->_bannerCollectionFactory = $resourceCollection;
     }
     
+    public function getPath(){
+        return self::MEDIA_PATH;
+    }
 }

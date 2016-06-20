@@ -25,14 +25,24 @@ class Tabs extends WidgetTabs {
     protected function _beforeToHtml()
     {
         $this->addTab(
-            'slider_info',
+            'slider_section',
             [
-                'label' => __('General'),
-                'title' => __('General'),
+                'label' => __('Slider'),
+                'title' => __('Slider'),
                 'content' => $this->getLayout()->createBlock(
-                    'Training\Slideshow\Block\Adminhtml\Slider\Edit\Tab\Form'
+                    'Training\Slideshow\Block\Adminhtml\Slider\Edit\Tab\Slider'
                 )->toHtml(),
                 'active' => true
+            ]
+        );
+        $this->addTab(
+            'banner_section',
+            [
+                'label' => __('Banner of Slider'),
+                'title' => __('Banner of Slider'),
+                'content' => $this->getLayout()->createBlock(
+                    'Training\Slideshow\Block\Adminhtml\Banner'
+                )->setTemplate('Training_Slideshow::banner/grid.phtml')->toHtml()
             ]
         );
  

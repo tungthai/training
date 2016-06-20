@@ -1,6 +1,6 @@
 <?php
 
-namespace Training\Slideshow\Block\Adminhtml\Banner\Edit\Tab;
+namespace Training\Slideshow\Block\Adminhtml\Slider\Edit\Tab;
  
 use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Backend\Block\Widget\Tab\TabInterface;
@@ -8,29 +8,24 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Data\FormFactory;
 use Training\Slideshow\Model\Status;
-use Training\Slideshow\Model\Slider;
 
-class Form extends Generic implements TabInterface
+class Slider extends Generic implements TabInterface
 {
 
-    protected $_sliderFactory;
-
-
-    /**
+   /**
      * @param Context $context
      * @param Registry $registry
      * @param FormFactory $formFactory
-     * @param Slider $sliderFactory
+     * @param Status $status
      * @param array $data
      */
     public function __construct(
         Context $context,
         Registry $registry,
         FormFactory $formFactory,
-        Slider $sliderFactory,
+        Status $status,
         array $data = []
     ) {
-        $this->_sliderFactory = $sliderFactory;
         parent::__construct($context, $registry, $formFactory, $data);
     }
  
@@ -41,67 +36,31 @@ class Form extends Generic implements TabInterface
      */
     protected function _prepareForm()
     {
-       /** @var $model \Training\Slideshow\Model\Banner */
-        $model = $this->_coreRegistry->registry('slideshow_banner');
+       /** @var $model \Training\Slideshow\Model\Slider */
+        $model = $this->_coreRegistry->registry('slideshow_slider');
  
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
-//        $form->setHtmlIdPrefix('banner_');
+//        $form->setHtmlIdPrefix('slider_');
  
         $fieldset = $form->addFieldset(
             'base_fieldset',
-            ['legend' => __('Banner Information')]
+            ['legend' => __('Slider Information')]
         );
         
         if ($model->getId()) {
-            $fieldset->addField('banner_id', 'hidden', ['name' => 'banner_id']);
+            $fieldset->addField('slider_id', 'hidden', ['name' => 'slider_id']);
         }
-        
+ 
         $fieldset->addField(
-                'slider_id',
-                'select',
-                [
-                    'label' => __('Slider'),
-                    'name' => 'slider_id',
-                    'values' => $this->_sliderFactory->getOptionsSlider(),
-                ]
-        );
-        
-        $fieldset->addField(
-            'image',
-            'image',
-            [
-                'title' => __('Banner Image'),
-                'label' => __('Banner Image'),
-                'name'  => 'image',
-                'note'  => 'Allow image type: jpg, jpeg, gif, png',
-            ]
-        );
-        
-        $fieldset->addField(
-            'url',
+            'title',
             'text',
             [
-                'title' => __('URL'),
-                'label' => __('URL'),
-                'name'  => 'url',
+                'name'        => 'title',
+                'label'    => __('Title'),
+                'required'     => true
             ]
         );
-        
-        $fieldset->addField(
-            'order_banner',
-            'text',
-            [
-                'name'      => 'order_banner',
-                'label'     => __('Order'),
-                'type'      => 'number',
-                'class'     => 'validate-number validate-greater-than-zero',
-                'maxlength' => 2,
-                'style'     => 'width: 50px'
-            ]
-        );
-        
-        
         $fieldset->addField(
             'status',
             'select',
@@ -126,7 +85,7 @@ class Form extends Generic implements TabInterface
      */
     public function getTabLabel()
     {
-        return __('Banner Info');
+        return __('Slider Info');
     }
  
     /**
@@ -136,7 +95,7 @@ class Form extends Generic implements TabInterface
      */
     public function getTabTitle()
     {
-        return __('Banner Info');
+        return __('Slider Info');
     }
  
     /**

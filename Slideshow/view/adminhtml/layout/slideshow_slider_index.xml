@@ -6,7 +6,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="Training\Slideshow\Block\Adminhtml\Slider" name="training.slideshow.slider.grid.container" />
+            <block class="Training\Slideshow\Block\Adminhtml\Slider" name="training.slideshow.slider.grid.container"/>
         </referenceContainer>
     </body>
 </page>

@@ -142,28 +142,19 @@ class InstallSchema implements InstallSchemaInterface{
         $installer = $setup;
         $installer->startSetup();
         //Add custom field slider id to CMS Page
-        if (version_compare($context->getVersion(), '2.0.4') < 0) {
-
+        if (version_compare($context->getVersion(), '1.0.1') < 0) {
             $tableName = $installer->getTable('cms_page');
-            
-            // Check if the table already exists
-            if ($installer->getConnection()->isTableExists($tableName) == true) {
-                // Declare data slider_id
-                $columns = [
-                    'slider_id' => [
-                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                    'nullable' => true,
-                    'default' => '',
-                    'comment' => 'Slider ID of module Training Slideshow',
-                    ],
-                ];
-
-                $connection = $setup->getConnection();
-                foreach ($columns as $name => $definition) {
-                    $connection->addColumn($tableName, $name, $definition);
-                }
-
+            $connection = $installer->getConnection();
+            if ($setup->getConnection()->isTableExists($tableName) == true) {
+                $connection = $installer->getConnection();
+                $connection->addColumn(
+                    $tableName,
+                    'slider_id',
+                    ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,'nullable' => false, 'default' => '', 'afters' => 'custom_theme_to'],
+                    'Slider Id'
+                        );
             }
+            
         }
 
         $installer->endSetup();

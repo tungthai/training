@@ -39,6 +39,11 @@ abstract class Banner extends \Magento\Backend\App\Action
     protected $_bannerFactory;
     
     /**
+     * @var \Magento\Framework\Controller\Result\RedirectFactory
+     */
+    protected $_resultRedirectFactory;
+     
+    /**
      * @param Context $context
      * @param Registry $coreRegistry
      * @param PageFactory $resultPageFactory
@@ -56,6 +61,7 @@ abstract class Banner extends \Magento\Backend\App\Action
         $this->_resultPageFactory = $resultPageFactory;
         $this->_bannerFactory = $bannerFactory;
         $this->_dateNow = $dateNow;
+        $this->_resultRedirectFactory = $context->getResultRedirectFactory();
     }
  
     /**

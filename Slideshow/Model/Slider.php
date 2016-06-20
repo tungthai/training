@@ -17,4 +17,23 @@ class Slider extends \Magento\Framework\Model\AbstractModel
         $this->_sliderCollectionFactory = $resourceCollection;
     }
     
+    
+    public function getOptionsSlider(){
+        $sliderCollection = $this->_sliderCollectionFactory;
+        
+        $options[] = [
+            'value' => '',
+            'label' => __('-------- Please select a slider --------'),
+        ];
+        if(count($sliderCollection) > 0):
+            foreach($sliderCollection as $slider){
+                $options[] = [
+                    'value' => $slider->getId(),
+                    'label' =>$slider->getTitle(),
+                ];
+            }
+        endif;
+        return $options;
+    }
+
 }

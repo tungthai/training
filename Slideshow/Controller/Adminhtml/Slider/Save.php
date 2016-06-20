@@ -27,7 +27,6 @@ class Save extends Slider {
             $sliderModel->setStatus(trim($formData['status']));
 
             try {
-                // Save news
                 $sliderModel->save();
 
                 // Display success message
